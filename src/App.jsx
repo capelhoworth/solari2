@@ -11,7 +11,7 @@ function App() {
   const fetchData = async () => {
     console.log('fetchData');
       try {
-          const response = await axios.get('public/reportingarea.dat');
+          const response = await axios.get('data\reportingarea.dat');
           const data = response.data;
 
           // Split data by newline and then by pipe (|)
