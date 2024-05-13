@@ -6,12 +6,11 @@ function App() {
 
   console.log('app render');
   const [reportingData, setReportingData] = useState([]);
-  //console.log(ReportingAreaConversion)
+
 
   const fetchData = async () => {
-    console.log('fetchData');
       try {
-          const response = await axios.get('data\reportingarea.dat');
+          const response = await axios.get('/data/reportingarea.dat');
           const data = response.data;
 
           // Split data by newline and then by pipe (|)
@@ -24,10 +23,8 @@ function App() {
               startTime: line[2] || '',
               timeZone: line[3],
           }));
-          console.log('!');
             console.log(jsonData);
-          // // state with JSON data
-          //setReportingData(jsonData);
+          setReportingData(jsonData);
       } catch (error) {
           console.error('Error fetching data:', error);
       }
@@ -35,14 +32,11 @@ function App() {
   };
 
   useEffect(() => {
-
-    console.log(1);
     fetchData();
-  []});
+  }, []);
 
   return (
     <>
-      <h1>Howdy! Thee</h1>
       <h2>Reporting Area Data</h2>
       <pre>{JSON.stringify(reportingData, null, 2)}</pre>
       {/* <ReportingAreaConversion /> */}
