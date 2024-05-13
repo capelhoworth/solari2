@@ -22,6 +22,16 @@ function App() {
               endDate: line[1],
               startTime: line[2] || '',
               timeZone: line[3],
+              forecast: line[4],
+              letterY: line[5],
+              letterN: line[6],
+              region: line[7],
+              state: line[8] || '',
+              lat: line[9],
+              long: line[10],
+              pollutant: line[11],
+              indexNumber: line[12],
+              rating: line[13],
           }));
             console.log(jsonData);
           setReportingData(jsonData);
