@@ -44,7 +44,7 @@ function ReportingAreaConversion() {
     
         fetchData();
     }, []);
-
+    console.log(reportingData)
     return (
         <>
             <h2>Reporting Area Data</h2>
