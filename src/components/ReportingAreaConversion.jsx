@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function ReportingAreaConversion() {
@@ -15,20 +15,20 @@ function ReportingAreaConversion() {
 
             // Convert parsed data into JSON format
             const jsonData = parsedData.map(line => ({
-                startDate: line[0],
-                endDate: line[1],
-                startTime: line[2] || '',
+                issueDate: line[0],
+                validDate: line[1],
+                validTime: line[2] || '',
                 timeZone: line[3],
-                forecast: line[4],
-                letterY: line[5],
-                letterN: line[6],
-                region: line[7],
-                state: line[8] || '',
+                recordSequence: line[4],
+                dataType: line[5],
+                primary: line[6],
+                reportingArea: line[7],
+                stateCode: line[8] || '',
                 lat: line[9],
                 long: line[10],
-                pollutant: line[11],
-                indexNumber: line[12],
-                rating: line[13],
+                parameterName: line[11],
+                aqiValue: line[12],
+                aqiCategory: line[13],
             }));
             console.log(jsonData);
             setReportingData(jsonData);
