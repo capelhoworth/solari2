@@ -17,7 +17,7 @@ function TopTen({data}) {
     return(
         <>
             <h2>Top 10 AQI Values Right Now</h2>
-            <ul>
+            <ol>
                 {topTenData.map((entry, index) => (
                     <li key={index}>
                         <strong>Reporting Area:</strong> {entry.reportingArea}, {entry.stateCode} -
@@ -26,7 +26,7 @@ function TopTen({data}) {
                         <strong>AQI Category:</strong> {entry.aqiCategory}
                     </li>
                 ))}
-            </ul>
+            </ol>
         </>
     );
 }
