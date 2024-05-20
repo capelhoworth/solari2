@@ -1,0 +1,31 @@
+.solari-board {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Courier New', Courier, monospace;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+}
+
+.solari-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.solari-row span {
+    flex: 1;
+    text-align: center;
+}
+
+.solari-row span:not(:last-child) {
+    border-right: 1px solid #444;
+}
+
+.solari-row:nth-child(even) {
+    background: #222;
+}

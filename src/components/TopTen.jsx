@@ -1,4 +1,5 @@
 import React from "react";
+import "./SolariBoard.css";
 
 function TopTen({data}) {
     // Today's date being formatted using "MM/DD/YY"
@@ -15,19 +16,16 @@ function TopTen({data}) {
     const topTenData = sortedData.slice(0, 10);
 
     return(
-        <>
+        <div className="solari-board">
             <h2>Top 10 AQI Values Right Now</h2>
-            <ol>
                 {topTenData.map((entry, index) => (
-                    <li key={index}>
-                        <strong>Reporting Area:</strong> {entry.reportingArea}, {entry.stateCode} -
-                        <strong>Forecast Source:</strong> {entry.forecastSource} -
-                        <strong>AQI Value:</strong> {entry.aqiValue} -
-                        <strong>AQI Category:</strong> {entry.aqiCategory}
-                    </li>
+                    <div className="solari-row" key={index}>
+                        <span className="reporting-area">{entry.reportingArea}</span>
+                        <span className="aqi-value">{entry.aqiValue}</span>
+                        <span className="aqi-category">{entry.aqiCategory}</span>
+                    </div>
                 ))}
-            </ol>
-        </>
+        </div>
     );
 }
 
