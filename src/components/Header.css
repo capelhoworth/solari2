@@ -1,0 +1,13 @@
+.header {
+    text-align: center;
+    margin: 20px;
+    color: #333;
+  }
+  
+  .update-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  

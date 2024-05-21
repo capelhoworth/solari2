@@ -1,0 +1,32 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 20px;
+  }
+  
+  .logo {
+    height: 10%;
+    width: 20%;
+    align-items: center;
+  }
+
+  .copyright {
+    font-size: 0.5em;
+    padding-top: 50px;
+  }
+  
+  .contact-info {
+    font-size: medium;
+    color: #115993; 
+    padding-top: 17px;
+  }
+  
+  a:link {
+    color: #2896b2;
+    /* text-decoration: none; */
+  }
+
+  a:visited {
+    color: #2896b2;
+  }
