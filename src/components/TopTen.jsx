@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 import "./SolariBoard.css";
 
 function TopTen({data}) {
@@ -30,6 +31,7 @@ function TopTen({data}) {
 
     return(
         <>
+            <Header date={formattedToday} />
             <div className="solari-board">
                 <div className="solari-header">
                     <h2>Location</h2>
