@@ -47,7 +47,6 @@ function ReportingAreaConversion() {
     console.log(reportingData)
     return (
         <>
-            <h2>Worst Air Quality Right Now</h2>
             <TopTen data={reportingData} />
         </>
     )
