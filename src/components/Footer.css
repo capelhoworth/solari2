@@ -1,32 +1,27 @@
 .footer {
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+    align-items: center;
     padding: 20px;
+    max-height: 50px;
+
   }
   
   .logo {
     height: 10%;
     width: 20%;
-    align-items: center;
   }
 
   .copyright {
     font-size: 0.5em;
-    padding-top: 50px;
   }
   
   .contact-info {
-    font-size: medium;
-    color: #115993; 
-    padding-top: 17px;
+    text-align: right; 
+    font-size: .8em;
+    color: #115993;
   }
   
-  a:link {
-    color: #2896b2;
-    /* text-decoration: none; */
-  }
-
-  a:visited {
+  a:link, a:visited {
     color: #2896b2;
   }

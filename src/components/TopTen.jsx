@@ -29,23 +29,25 @@ function TopTen({data}) {
     // );
 
     return(
-        <div className="solari-board">
-            <div className="solari-header">
-                <h2>Location</h2>
-                <h2>AQI</h2>
-                <h2>Health Level</h2>
+        <>
+            <div className="solari-board">
+                <div className="solari-header">
+                    <h2>Location</h2>
+                    <h2>AQI</h2>
+                    <h2>Health Level</h2>
+                </div>
+                    {topTenData.map((entry, index) => (
+                        <div className="solari-row" key={index}>
+                            {/* <span className="reporting-area">{wrapCharacters(entry.reportingArea)}</span>
+                            <span className="aqi-value">{wrapCharacters(entry.aqiValue)}</span>
+                            <span className="aqi-category">{wrapCharacters(entry.aqiCategory)}</span> */}
+                            <span className="reporting-area">{entry.reportingArea}</span>
+                            <span className="aqi-value">{entry.aqiValue}</span>
+                            <span className="aqi-category">{entry.aqiCategory}</span>
+                        </div>
+                    ))}
             </div>
-                {topTenData.map((entry, index) => (
-                    <div className="solari-row" key={index}>
-                        {/* <span className="reporting-area">{wrapCharacters(entry.reportingArea)}</span>
-                        <span className="aqi-value">{wrapCharacters(entry.aqiValue)}</span>
-                        <span className="aqi-category">{wrapCharacters(entry.aqiCategory)}</span> */}
-                        <span className="reporting-area">{entry.reportingArea}</span>
-                        <span className="aqi-value">{entry.aqiValue}</span>
-                        <span className="aqi-category">{entry.aqiCategory}</span>
-                    </div>
-                ))}
-        </div>
+        </>
     );
 }
 
