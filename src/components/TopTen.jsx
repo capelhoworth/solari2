@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import "./SolariBoard.css";
 
@@ -16,18 +16,35 @@ function TopTen({data}) {
     // Get top 10 aqiValues
     const topTenData = sortedData.slice(0, 10);
 
-    // // logic/mapping to allow for a wrapper around each character that needs flip-board animation
-    // const wrapCharacters = (str) => (
-    //     str.split('').map((char, index) => (
-    //         <div className="tickerWrap" key={index}>
-    //             <div className="cover">
-    //                 <div className="flipper">
-    //                     <div className="tickerTxt">{char}</div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     ))
-    // );
+    const [isAnimating, setIsAnimating] = useState(true)
+
+    useEffect(() => {
+        const timeout = setTimeout(() => setIsAnimating(false), 4000);
+        return () => clearTimeout(timeout);
+    }, []);
+
+    // logic/mapping splits string into characters and wraps each with flip animation structure
+    const wrapCharacters = (str) => (
+        str.split('').map((char, index) => (
+            <span className={`tickerWrap ${isAnimating ? 'animating' : ''}`} key={`wrapper-${index}`}>
+                <span className="cover">
+                    <span className="flipper">
+                        <span className="tickerTxt">{char}</span>
+                        {/* <span className="tickerTxt inverse">{getRandomChar(char)}</span> */}
+                    </span>
+                </span>
+            </span>
+        ))
+    );
+
+    // function getRandomChar(char) {
+    //     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    //     let randomChar = alphabet[Math.floor(Math.random() * alphabet.length)];
+    //     while (randomChar === char) {
+    //       randomChar = alphabet[Math.floor(Math.random() * alphabet.length)];
+    //     }
+    //     return randomChar.toUpperCase();
+    // }
 
     return(
         <>
@@ -39,13 +56,13 @@ function TopTen({data}) {
                     <h2>Health Level</h2>
                 </div>
                     {topTenData.map((entry, index) => (
-                        <div className="solari-row" key={index}>
-                            {/* <span className="reporting-area">{wrapCharacters(entry.reportingArea)}</span>
+                        <div className="solari-row" key={`row-${index}`}>
+                            <span className="reporting-area">{wrapCharacters(entry.reportingArea)}</span>
                             <span className="aqi-value">{wrapCharacters(entry.aqiValue)}</span>
-                            <span className="aqi-category">{wrapCharacters(entry.aqiCategory)}</span> */}
-                            <span className="reporting-area">{entry.reportingArea}</span>
+                            <span className="aqi-category">{wrapCharacters(entry.aqiCategory)}</span>
+                            {/* <span className="reporting-area">{entry.reportingArea}</span>
                             <span className="aqi-value">{entry.aqiValue}</span>
-                            <span className="aqi-category">{entry.aqiCategory}</span>
+                            <span className="aqi-category">{entry.aqiCategory}</span> */}
                         </div>
                     ))}
             </div>
