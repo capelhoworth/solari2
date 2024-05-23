@@ -16,21 +16,29 @@ function TopTen({data}) {
     // Get top 10 aqiValues
     const topTenData = sortedData.slice(0, 10);
 
-    const [isAnimating, setIsAnimating] = useState(true)
-
     useEffect(() => {
-        const timeout = setTimeout(() => setIsAnimating(false), 4000);
-        return () => clearTimeout(timeout);
+        const flippers = document.querySelectorAll(".flipper");
+        const handleAnimationEnd = (event) => {
+                event.target.classList.add("animation-ended");
+            };
+            flippers.forEach((flipper) => {
+                flipper.addEventListener("animationend", handleAnimationEnd);
+        });
+        return () => {
+            flippers.forEach((flipper) => {
+                flipper.removeEventListener("animationend", handleAnimationEnd);
+            });
+        };
     }, []);
 
     // logic/mapping splits string into characters and wraps each with flip animation structure
-    const wrapCharacters = (str) => (
+    const wrapCharacters = (str, rowIndex) => (
         str.split('').map((char, index) => (
-            <span className={`tickerWrap ${isAnimating ? 'animating' : ''}`} key={`wrapper-${index}`}>
+            <span className="tickerWrap animating" key={`wrapper-${index}`} style={{ animationDelay: `${rowIndex * 0.5}s` }}>
                 <span className="cover">
                     <span className="flipper">
                         <span className="tickerTxt">{char}</span>
-                        {/* <span className="tickerTxt inverse">{getRandomChar(char)}</span> */}
+                        {/* <span className="tickerTxt inverse hidden-after-animation">{getRandomChar(char)}</span> */}
                     </span>
                 </span>
             </span>
@@ -38,12 +46,12 @@ function TopTen({data}) {
     );
 
     // function getRandomChar(char) {
-    //     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    //     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     //     let randomChar = alphabet[Math.floor(Math.random() * alphabet.length)];
     //     while (randomChar === char) {
     //       randomChar = alphabet[Math.floor(Math.random() * alphabet.length)];
     //     }
-    //     return randomChar.toUpperCase();
+    //     return randomChar;
     // }
 
     return(

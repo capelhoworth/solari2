@@ -30,72 +30,13 @@
 
 .solari-row {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
+    padding: 5px 0;
     border-bottom: 1px solid #444;
 }
-
-
-.tickerWrap {
-    margin: 0 5px;
-    display: inline-block;
-    background-color: #333;
-    position: relative;
-    /* perspective: 300px; */
-} 
-
-.cover {
-    background-color: #333;
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    top: 0;
-}
-
-.flipper {
-    border-top: 1px solid #333;
-    background-color: #333;
-    width: 90%;
-    height: 55px;
-    position: absolute;
-    top: 50%;
-    transform: rotateX(-180deg);
-    transform-origin: top;
-}
-
-.tickerTxt {
-    transform: scaleY(-1);
-    position: absolute;
-}
-
-&.inverse {
-    transform: scaleY(1);
-} 
-
-.animating .flipper {
-    animation: flip 0.6s ease-in-out;
-}
-
-@keyframes flip {
-    0% {
-        transform: rotateX(0);
-    }
-    50% {
-        transform: rotateX(180deg);
-    }
-    100% {
-        transform: rotateX(360deg);
-    }
-}
-
 
 .solari-row span {
     flex: 1;
     text-align: center;
-}
-
-.solari-row span:not(:last-child) {
-    border-right: 1px solid #444;
 }
 
 .solari-row:nth-child(even) {
@@ -113,3 +54,63 @@
 .aqi-category {
     font-style: italic;
 }
+
+.tickerWrap {
+    margin: 0 5px;
+    display: inline-block;
+    background-color: #333;
+    position: relative;
+} 
+
+.cover {
+    background-color: #333;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+}
+
+.flipper {
+    /* border-top: 1px solid #333;
+    background-color: #333; */
+    position: absolute;
+    /* top: 50%; */
+    transform: rotateX(-180deg);
+    transform-origin: top;
+}
+
+.tickerTxt {
+    transform: scaleY(-1);
+    position: absolute;
+}
+
+&.inverse {
+    transform: scaleY(1);
+} 
+
+/* .tickerTxt.hidden-after-animation {
+    visibility: hidden;
+} */
+
+.animating .flipper {
+    animation: flip .6s ease-in-out;
+    animation-iteration-count: 6;
+}
+
+/* .animation-ended .tickerTxt.inverse {
+    visibility: hidden;
+} */
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0);
+    }
+    50% {
+        transform: rotateX(180deg);
+    }
+    100% {
+        transform: rotateX(360deg);
+    }
+}
+
+
