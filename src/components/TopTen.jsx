@@ -35,12 +35,12 @@ function TopTen({data}) {
     const wrapCharacters = (str, rowIndex) => (
         str.split('').map((char, index) => (
             <div className="tickerWrap animating" key={`wrapper-${index}`} style={{ animationDelay: `${rowIndex * 0.5}s` }}>
-                <div className="cover">
+                {/* <div className="cover"> */}
                     <div className="flipper">
                         <div className="tickerTxt">{char}</div>
                         {/* <div className="tickerTxt inverse hidden-after-animation">{getRandomChar(char)}</div> */}
                     </div>
-                </div>
+                {/* </div> */}
             </div>
         ))
     );
@@ -59,20 +59,33 @@ function TopTen({data}) {
             <Header date={formattedToday} />
             <div className="solari-board">
                 <div className="solari-header">
-                    <h2>Location</h2>
-                    <h2>AQI</h2>
-                    <h2>Health Level</h2>
                 </div>
-                    {topTenData.map((entry, index) => (
-                        <div className="solari-row" key={`row-${index}`}>
-                            <span className="reporting-area">{wrapCharacters(entry.reportingArea)}</span>
-                            <span className="aqi-value">{wrapCharacters(entry.aqiValue)}</span>
-                            <span className="aqi-category">{wrapCharacters(entry.aqiCategory)}</span>
-                            {/* <span className="reporting-area">{entry.reportingArea}</span>
-                            <span className="aqi-value">{entry.aqiValue}</span>
-                            <span className="aqi-category">{entry.aqiCategory}</span> */}
+                        <div className="solari-mapping">
+                            <div className="solari-column" key={`column-reportingArea`}>
+                            <h2>Location</h2>
+                            {topTenData.map((entry, index) => (
+                                <div className="solari-row" key={`row-ra-${index}`}>
+                                    <span className="reporting-area">{wrapCharacters(entry.reportingArea)}</span>
+                                </div>
+                            ))}
+                            </div>
+                            <div className="solari-column" key={`column-aqiValue`}>
+                            <h2>AQI</h2>
+                            {topTenData.map((entry, index) => (
+                                <div className="solari-row" key={`row-aqi-${index}`}>
+                                    <span className="aqi-value">{wrapCharacters(entry.aqiValue)}</span>
+                                </div>
+                            ))}
+                            </div>
+                            <div className="solari-column" key={`column-aqiCategory`}>
+                            <h2>Health Level</h2>
+                            {topTenData.map((entry, index) => (
+                                <div className="solari-row" key={`row-aqiCat-${index}`}>
+                                    <span className="aqi-category">{wrapCharacters(entry.aqiCategory)}</span>
+                                </div>
+                            ))}
+                            </div>
                         </div>
-                    ))}
             </div>
         </>
     );

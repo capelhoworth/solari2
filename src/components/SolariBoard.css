@@ -16,85 +16,106 @@
 
 .solari-header {
     display: flex;
+    flex-wrap: nowrap;
     justify-content: space-between;
     padding-bottom: 5px;
     border-bottom: 2px solid #444;
 }
 
 .solari-header h2 {
-    flex: 1;
+    /* flex-wrap: nowrap */
     text-align: center;
     font-size: 1.2em;
     color: #ffa500;
 }
 
+.solari-mapping {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10%;
+}
+
+.solari-column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
 .solari-row {
     display: flex;
+    flex: 1;
+    flex-direction: row;
+    /* justify-content: space-around; */
     padding: 5px 0;
     border-bottom: 1px solid #444;
 }
 
-.solari-row span {
-    flex: 1;
+/* .solari-row span {
+    flex-direction: row;
+    justify-content: space-between;
     text-align: center;
-}
+} */
 
 .solari-row:nth-child(even) {
     background: #222;
 }
 
 .reporting-area {
+    display: flex;
+    flex-wrap: wrap;
+    /* max-width: 33.34%; */
     text-transform: uppercase;
 }
 
 .aqi-value {
+    display: flex;
+    /* max-width: 33.34%; */
     font-weight: bold;
 }
 
 .aqi-category {
+    display: flex;
+    flex-wrap: wrap;
+    /* max-width: 33.34%; */
     font-style: italic;
 }
 
 .tickerWrap {
-    margin: 0 5px;
-    display: inline-block;
+    margin: 0 3px;
+    /* justify-content: space-between; */
     background-color: #333;
-    position: relative;
 } 
 
-.cover {
+/* .cover {
     background-color: #333;
     width: 100%;
     height: 50%;
     position: absolute;
     top: 0;
-}
+} */
 
-.flipper {
-    /* border-top: 1px solid #333;
-    background-color: #333; */
-    position: absolute;
-    /* top: 50%; */
+/* .flipper {
     transform: rotateX(-180deg);
     transform-origin: top;
 }
 
 .tickerTxt {
     transform: scaleY(-1);
-    position: absolute;
 }
 
 &.inverse {
     transform: scaleY(1);
-} 
+}  */
 
 /* .tickerTxt.hidden-after-animation {
     visibility: hidden;
 } */
 
 .animating .flipper {
-    animation: flip .6s ease-in-out;
-    animation-iteration-count: 6;
+    animation: flip .3s ease-in-out;
+    animation-iteration-count: 3;
 }
 
 /* .animation-ended .tickerTxt.inverse {
